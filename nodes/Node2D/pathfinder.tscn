@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cof4b1jf48cgn"]
+
+[ext_resource type="Script" path="res://components/movement/pathfinder.gd" id="1_txe7u"]
+
+[node name="Pathfinder" type="Node2D" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("1_txe7u")
+nav_agent = NodePath("NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 5.0
+avoidance_enabled = true
+radius = 8.0
+neighbor_distance = 64.0
+max_speed = 75.0
+debug_use_custom = true
+
+[node name="PathRequestDelay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

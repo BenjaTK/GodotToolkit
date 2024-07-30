@@ -1,4 +1,4 @@
-class_name StateMachine
+class_name ObjectStateMachine
 extends Object
 
 

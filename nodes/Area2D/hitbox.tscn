@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcd5f88eq6c8p"]
+
+[ext_resource type="Script" path="res://components/health/hitbox.gd" id="1_lul23"]
+
+[node name="Hitbox" type="Area2D"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_lul23")
+faction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.701961, 0.192157, 0.176471, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
