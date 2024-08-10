@@ -69,3 +69,10 @@ static func randf_sign() -> float:
 ## Returns -1 or 1 randomly.
 static func randi_sign() -> int:
 	return round(randf_sign())
+
+
+static func get_random_point_in_radius(position: Vector2, radius: float, min_distance: float = 0.0) -> Vector2:
+	var pos: Vector2 = position + Vector2(randf_range(-radius, radius), randf_range(-radius, radius))
+	while pos.distance_squared_to(position) < 16384:
+		pos = position + Vector2(randf_range(-radius, radius), randf_range(-radius, radius))
+	return pos
