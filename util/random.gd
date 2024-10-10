@@ -5,19 +5,8 @@ extends Object
 
 ## [param data] is a [Dictionary] with the structure {[code]object[/code]:[code]weight[/code]}.
 static func pick_weighted(data: Dictionary) -> Variant:
-	var total_weight := 0.0
-
-	for weight in data.values():
-		total_weight += weight
-
-	var rand := randf_range(0.0, total_weight)
-	var running_total := 0.0
-	for object in data:
-		running_total += data[object]
-		if rand <= running_total:
-			return object
-
-	return null
+	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	return data.keys()[rng.rand_weighted(data.values())]
 
 
 ## The resources in [param resources] have to have a parameter [param weight] of type [code]float[/code].
@@ -71,8 +60,5 @@ static func randi_sign() -> int:
 	return round(randf_sign())
 
 
-static func get_random_point_in_radius(position: Vector2, radius: float, min_distance: float = 0.0) -> Vector2:
-	var pos: Vector2 = position + Vector2(randf_range(-radius, radius), randf_range(-radius, radius))
-	while pos.distance_squared_to(position) < min_distance*min_distance:
-		pos = position + Vector2(randf_range(-radius, radius), randf_range(-radius, radius))
-	return pos
+static func get_point_in_radius(position: Vector2, radius: float, min_distance: float = 0.0) -> Vector2:
+	return position + rand_dir() * randf_range(min_distance, radius)

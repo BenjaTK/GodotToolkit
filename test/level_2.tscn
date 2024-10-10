@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bucsabf3t27py"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 554.0
+offset_top = 155.0
+offset_right = 594.0
+offset_bottom = 195.0
+color = Color(1, 0.128758, 0.0765043, 1)
